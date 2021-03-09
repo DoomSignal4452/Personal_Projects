@@ -1,0 +1,125 @@
+body {
+    background-color: cornflowerblue;
+    font-family: Helvetica;
+}
+
+div.headerBig {
+    background-color: rgba(0, 0, 0, 0.288);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+
+}
+div.headerMid {
+    background-color: cornsilk;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+div.headerTop {
+    background-color: rgb(218, 211, 186);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+div.headerBot {
+    background-color: rgb(197, 192, 170);
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+  .mainCont {
+      background-color: cornsilk;
+      min-height: 500px;
+      max-width: 1000px;
+      margin: 0px auto 20px auto;
+      padding: 10px;
+      border-radius: 10px;
+  }
+
+/* Navigation Bar */
+  .navBar {
+    height: 46px;
+    /*background-color: #1b1b1b;*/
+  }
+  
+  .navBar a {
+      float: left;
+      font-size: 16px;
+      /*color: white;*/
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+  
+  .dropdown {
+      float: left;
+      position: relative;
+  }
+  
+  .dropdown .dropbtn {
+      font-size: 16px;    
+      border: none;
+      outline: none;
+      /*color: white;*/
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn {
+      background-color: red;
+  }
+  
+  .dropdown-one {
+    cursor: pointer;
+    display: none;
+    /*position: absolute;*/
+    position: absolute;
+    transform: translateY(46px);
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  .dropdown-two {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    left: 160px;
+    top: 0px;
+    min-width: 160px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+
+  .dropdown-three {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    left: 160px;
+    top: 0px;
+    min-width: 160px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  .dropdown:hover .dropdown-one, #link1:hover > .dropdown-two, #link2:hover > .dropdown-three {
+    display: block;
+  }
+  
+  .dropdown-one .dItem {
+      color: black;
+      padding: 12px 16px;
+      display: block;
+      text-align: left;
+      min-width: 160px;
+  }
+  
+  .dropdown-one .dItem:hover, .dropdown-two a:hover, .dropdown-three a:hover {
+      background-color: #ddd;
+  }
+  /* End Navigation Bar */

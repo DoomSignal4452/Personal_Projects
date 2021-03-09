@@ -1,0 +1,15 @@
+
+Elements: Wind, Fire, Water, Stone, (Neutral)
+
+Affinity: Plant, Cold, Inorganic, Normal
+
+
+1. Neutral - (Dog)
+2. Wind/Plant - Leafet (Fox)
+3. Stone/Cold - (Cat)
+4. Fire/Inorganic - (Gecko)
+5. Water/Normal - (Dinosaur)
+6. Wind/Cold - (Serpent)
+7. Stone/Plant - (Horse)
+8. Fire/Normal - (Meercat)
+9. Water/Inorganic - (Bird)

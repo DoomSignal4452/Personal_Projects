@@ -1,0 +1,208 @@
+body {
+    background: rgb(67, 76, 94);
+    background-attachment: fixed;
+    font-family: Trebuchet MS;
+    color: rgb(22, 36, 36);
+    padding: 0;
+    margin: 0;
+    padding-top: 50px;
+
+}
+
+.page {
+    background-color: rgb(241, 241, 237);
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button.pickme {
+    outline: none;
+    background-color: #64919c;
+    border: none;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    color: white;
+    transition-duration: 0.2s;
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 10px;
+    cursor: pointer;
+    border: 2px solid;
+    border-color: #64919c;
+    box-shadow: 0 5px #999;
+}
+
+
+
+button.pickme:hover {
+    background-color: #e7e7e7;
+    color: #64919c;
+
+}
+
+button.pickme:active {
+    box-shadow: 0 1px #666;
+    transform: translateY(4px);
+}
+
+button.pickme:disabled,
+button[disabled] {
+    background-color: #b5c1c4;
+    color: #829499;
+    border-color: #829499;
+}
+
+/* pickmeLarge */
+button.pickmeLarge {
+    width: 250px;
+    height: 50px;
+
+    outline: none;
+    background-color: #64919c;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    transition-duration: 0.2s;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 10px;
+    cursor: pointer;
+    border: 2px solid;
+    border-color: #64919c;
+    box-shadow: 0 5px #999;
+}
+button.pickmeLarge:hover {
+    background-color: #e7e7e7;
+    color: #64919c;
+
+}
+button.pickmeLarge:active {
+    box-shadow: 0 1px #666;
+    transform: translateY(4px);
+}
+button.pickmeLarge:disabled,
+button[disabled] {
+    background-color: #b5c1c4;
+    color: #829499;
+    border-color: #829499;
+}
+/* pickmeLarge */
+
+.WhiteBox {
+    background-color: snow;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 600px;
+    min-height: 50px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.CharPicture {
+    height: 300px;
+    width: 300px;
+    background-color: #666;
+    margin: 5px;
+}
+
+.StatInfo {
+    margin: 0px auto;
+    padding-top: 5px;
+}
+
+.StatSheet {
+    padding-top: 15px;
+    border: 2px solid;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+
+.CharPicture { grid-area: CharPicture; }
+.StatInfo { grid-area: StatInfo; }
+.pickmeLarge { grid-area: pickmeLarge; }
+
+#SelectionField {
+    display: grid;
+    grid-template-areas:    'CharPicture StatInfo'
+                            'CharPicture pickmeLarge';
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+}
+
+#PlayerBattlePic { grid-area: PlayerChar; }
+#NPCBattlePic { grid-area: NPCChar; }
+.VSbox { grid-area: VSbox; }
+#BattleButton { grid-area: BattleButton; }
+#BattleInfoWrap { grid-area: BattleInfoWrap; }
+
+
+#BattleField {
+    display: grid;
+    grid-template-areas:    'PlayerChar VSbox NPCChar'                     
+                            'BattleInfoWrap BattleInfoWrap BattleInfoWrap'
+                            'BattleButton BattleButton BattleButton';
+    grid-template-columns: auto auto auto;
+    grid-gap: 5px;
+}
+.VSbox {
+    margin: auto;
+
+}
+.VSmark {
+    height: 85px;
+    width: 85px;
+ /*   background-color: aquamarine;*/
+    font-size: 300%;
+}
+
+.StatSheetSmall {
+    padding-top: 15px;
+    border: 2px solid;
+    width: 240px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.fieldPic {
+    width: 250px;
+    height: 250px;
+    background-color: #666;
+}
+
+.BattleSelection {
+    padding-top: 15px;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+#PlayerStats {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+#NPCStats {
+    display: inline-block;
+}
+.spacer {
+    display: inline-block;
+    width: 100px;
+}
+.Chosen {
+    font-size: 120%;
+    font-weight: bold;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Versus</title>
+
+
+
+</head>
+
+<body>
+    <script src="CharacterChoise.js"></script>
+    <script src="BattleCalc.js"></script>
+
+    <div class="page">    
+        <h3>Versus</h3>
+
+        <div id='app'></div>
+    
+    </div>
+
+    <script>
+
+        // ###############################################################
+        // ##                        Model                              ##
+        // ###############################################################
+
+        // ---- Player Stats ---------------------------------------------
+
+        let PlayerHealth=0;
+        let PlayerMaxHeatlh=0;
+        let PlayerMagicPoints=0;
+        let PlayerMagicPointsMax=0;
+
+
+        let PlayerAttackMin=0;
+        let PlayerAttackMax=0;
+
+        let PlayerCriticalChance=0;
+
+
+        let PlayerCharacter= "Select a Monster";
+        let NoChoose="<img src='tmp-pic/Choose.jpg'></img>";
+        let ChosenCharacter="None Selected";
+
+        // Test
+        let PlayerBaseAttack;
+        let PlayerDodgeRate=0;
+
+
+
+        // ---- NPC Stats ------------------------------------------------
+
+        let NPCHealth=0;
+        let NPCMaxHealth=0;
+        let NPCMagicPoints=0;
+        let NPCMagicPointsMax=0;
+
+        let NPCAttackRange=0;
+        let NPCAttackValue;
+        let NPCCriticalChance;
+
+
+        let NPCBaseAttack;
+        let NPCDodgeRate;
+
+        let NPCharacterPic;
+
+        let NPCChoiseVal;
+        let NPCChoise;
+        let NPCharacter = "NPC Character";
+
+
+        // ---- Monster List ---------------------------------------------
+
+        const Monster = [
+            { id: 01, Species: 'Calumon',     Health: 120, MagicPoints: 80,  AttackMin: 5, AttackMax: 10, CritChance: 30, DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Calumon.jpg'></img>"},
+            { id: 02, Species: 'DemiMeramon', Health: 100, MagicPoints: 80,  AttackMin: 8, AttackMax: 15, CritChance: 40, DodgeRate: 15, Element: '', Affinity: '', Picture: "<img src='tmp-pic/DemiMeramon.jpg'></img>"},
+            { id: 03, Species: 'DemiVeemon',  Health: 150, MagicPoints: 50,  AttackMin: 2, AttackMax: 6,  CritChance: 20, DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='tmp-pic/DemiVeemon.jpg'></img>"},
+            { id: 04, Species: 'Nyaromon',    Health: 90,  MagicPoints: 90,  AttackMin: 5, AttackMax: 8,  CritChance: 35, DodgeRate: 25, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Nyaromon.jpg'></img>"},
+            { id: 05, Species: 'Poromon',     Health: 110, MagicPoints: 70,  AttackMin: 3, AttackMax: 6,  CritChance: 20, DodgeRate: 20, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Poromon.gif'></img>"},
+            { id: 06, Species: 'Tanemon',     Health: 160, MagicPoints: 90,  AttackMin: 2, AttackMax: 3,  CritChance: 50, DodgeRate: 5,  Element: '', Affinity: '', Picture: "<img src='tmp-pic/Tanemon.gif'></img>"},
+            { id: 07, Species: 'Tokomon',     Health: 100, MagicPoints: 100, AttackMin: 8, AttackMax: 10, CritChance: 5,  DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Toko.jpg'></img>"},
+            { id: 08, Species: 'Tsumemon',    Health: 130, MagicPoints: 50,  AttackMin: 4, AttackMax: 6,  CritChance: 60, DodgeRate: 15, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Tsumemon.gif'></img>"},
+            { id: 09, Species: 'Upamon',      Health: 140, MagicPoints: 40,  AttackMin: 1, AttackMax: 10, CritChance: 20, DodgeRate: 0,  Element: '', Affinity: '', Picture: "<img src='tmp-pic/Upamon.gif'></img>"},
+
+        ];
+
+        console.table(Monster);
+
+        // ---- Other ----------------------------------------------------
+
+        let isReady = "no";
+        let HasSelected = "no";
+        let disButtonReady = "disabled";
+        let thisIsTheWinner = "";
+
+
+        let disButtonAttk = "";
+        let disButtonMagicAttk= "";
+
+        let disButtonPC = "";
+        
+
+        
+
+
+
+
+
+
+
+        //View
+        updateView();
+        function updateView() {
+            if (isReady=="no") {
+            document.getElementById("app").innerHTML = `
+            
+            <div id="SelectionField" class="WhiteBox"></div>
+
+            <div class="WhiteBox">
+                <button id="Choose0" class="pickme" onclick='Choose(0)'>Calumon</button>
+                <button id="Choose1" class="pickme" onclick='Choose(1)'>DemiMeramon</button>
+                <button id="Choose2" class="pickme" onclick='Choose(2)'>DemiVeemon</button>
+
+                <button id="Choose3" class="pickme" onclick='Choose(3)'>Nyaromon</button>
+                <button id="Choose4" class="pickme" onclick='Choose(4)'>Poromon</button>
+                <button id="Choose5" class="pickme" onclick='Choose(5)'>Tanemon</button>
+
+                <button id="Choose6" class="pickme" onclick='Choose(6)'>Tokomon</button>
+                <button id="Choose7" class="pickme" onclick='Choose(7)'>Tsumemon</button>
+                <button id="Choose8" class="pickme" onclick='Choose(8)'>Upamon</button>
+            </div>   
+            `;
+            SelectionView();
+            }
+        else if (isReady=="yes" && NPCHealth>0 && PlayerHealth>0)  {
+            document.getElementById("app").innerHTML = `
+            <div id="BattleCont" class="WhiteBox">
+                
+                <div id="BattleField">
+                    <div id="PlayerBattlePic" class="fieldPic">${NoChoose}</div>
+    
+                    <div class="VSbox">
+    
+                        <div class="VSmark" >VS</div>
+    
+                    </div>
+            
+                    <div id="NPCBattlePic" class="fieldPic">${NPCharacterPic}</div>
+                </div>
+    
+    
+                <div class="BattleInfoWrap">
+                    <div id="PlayerStats" class="">
+                        
+                        <div class="StatSheetSmall">
+                            <div class="Chosen">${ChosenCharacter}</div>
+                            HP: ${PlayerHealth}/${PlayerMaxHeatlh}
+                            <br>MP: ${PlayerMagicPoints}/${PlayerMagicPointsMax}
+                        </div>
+                    </div>
+
+                    <div class="spacer"></div>
+    
+                    <div id="NPCStats" class="">
+                        
+                        <div class="StatSheetSmall">
+                            <div class="Chosen">Enemy ${NPCChoise}</div>
+                            HP: ${NPCHealth}/${NPCMaxHealth}
+                            <br>MP: ${NPCMagicPoints}/${NPCMagicPointsMax}
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div id="BattleButton" class="BattleSelection">
+                    <button ${disButtonAttk} id="playAttack" class="pickme" onclick='InitiateAttack("basic")'>Basic Attack</button>
+                    <button ${disButtonMagicAttk} id="playMagicAttack" class="pickme" onclick='InitiateAttack("magic")'>Magic Attack</button>
+    
+                </div>
+    
+            </div>
+
+        `
+        } else {
+            document.getElementById("app").innerHTML = `
+            <div class=PlayerFrame><div id="PCpic">${NoChoose}</div></div>
+            
+
+
+
+
+            
+
+            <div class="result">
+                <div class="isWinner"> ${thisIsTheWinner} </div>
+            </div>
+
+
+            <button id="ResetBut" class="pickme" onclick='ResetBattle()'>Reset</button>
+
+
+        `
+        }
+    
+    };
+
+        //Controller
+        
+
+
+    </script>
+</body>
+
+</html>
