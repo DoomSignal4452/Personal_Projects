@@ -14,17 +14,16 @@
 </head>
 
 <body>
-    <script src="CharacterChoise.js"></script>
-    <script src="BattleCalc.js"></script>
+
 
     <div class="page">    
         <h3>Versus</h3>
 
         <div id='app'></div>
-    
+
     </div>
 
-    <script>
+<script>
 
         // ###############################################################
         // ##                        Model                              ##
@@ -45,7 +44,7 @@
 
 
         let PlayerCharacter= "Select a Monster";
-        let NoChoose="<img src='tmp-pic/Choose.jpg'></img>";
+        let NoChoose="<img src='tmp-pic/picWIP.png'></img>";
         let ChosenCharacter="None Selected";
 
         // Test
@@ -79,21 +78,21 @@
         // ---- Monster List ---------------------------------------------
 
         const Monster = [
-            { id: 01, Species: 'Calumon',     Health: 120, MagicPoints: 80,  AttackMin: 5, AttackMax: 10, CritChance: 30, DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Calumon.jpg'></img>"},
-            { id: 02, Species: 'DemiMeramon', Health: 100, MagicPoints: 80,  AttackMin: 8, AttackMax: 15, CritChance: 40, DodgeRate: 15, Element: '', Affinity: '', Picture: "<img src='tmp-pic/DemiMeramon.jpg'></img>"},
-            { id: 03, Species: 'DemiVeemon',  Health: 150, MagicPoints: 50,  AttackMin: 2, AttackMax: 6,  CritChance: 20, DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='tmp-pic/DemiVeemon.jpg'></img>"},
-            { id: 04, Species: 'Nyaromon',    Health: 90,  MagicPoints: 90,  AttackMin: 5, AttackMax: 8,  CritChance: 35, DodgeRate: 25, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Nyaromon.jpg'></img>"},
-            { id: 05, Species: 'Poromon',     Health: 110, MagicPoints: 70,  AttackMin: 3, AttackMax: 6,  CritChance: 20, DodgeRate: 20, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Poromon.gif'></img>"},
-            { id: 06, Species: 'Tanemon',     Health: 160, MagicPoints: 90,  AttackMin: 2, AttackMax: 3,  CritChance: 50, DodgeRate: 5,  Element: '', Affinity: '', Picture: "<img src='tmp-pic/Tanemon.gif'></img>"},
-            { id: 07, Species: 'Tokomon',     Health: 100, MagicPoints: 100, AttackMin: 8, AttackMax: 10, CritChance: 5,  DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Toko.jpg'></img>"},
-            { id: 08, Species: 'Tsumemon',    Health: 130, MagicPoints: 50,  AttackMin: 4, AttackMax: 6,  CritChance: 60, DodgeRate: 15, Element: '', Affinity: '', Picture: "<img src='tmp-pic/Tsumemon.gif'></img>"},
-            { id: 09, Species: 'Upamon',      Health: 140, MagicPoints: 40,  AttackMin: 1, AttackMax: 10, CritChance: 20, DodgeRate: 0,  Element: '', Affinity: '', Picture: "<img src='tmp-pic/Upamon.gif'></img>"},
+            { id: 01, Species: 'Dog(WIP)',     Health: 120, MagicPoints: 80,  AttackMin: 5, AttackMax: 10, CritChance: 30, DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='tmp-pic/picWIP.png'></img>"},
+            { id: 02, Species: 'Fox(WIP)', Health: 100, MagicPoints: 80,  AttackMin: 8, AttackMax: 15, CritChance: 40, DodgeRate: 15, Element: '', Affinity: '', Picture: "<img src='tmp-pic/picWIP.png'></img>"},
+            { id: 03, Species: 'Cat(WIP)',  Health: 150, MagicPoints: 50,  AttackMin: 2, AttackMax: 6,  CritChance: 20, DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='pic/picWIP.png'></img>"},
+            { id: 04, Species: 'Gecko(WIP)',    Health: 90,  MagicPoints: 90,  AttackMin: 5, AttackMax: 8,  CritChance: 35, DodgeRate: 25, Element: '', Affinity: '', Picture: "<img src='tmp-pic/picWIP.png'></img>"},
+            { id: 05, Species: 'Dinosaur(WIP)',     Health: 110, MagicPoints: 70,  AttackMin: 3, AttackMax: 6,  CritChance: 20, DodgeRate: 20, Element: '', Affinity: '', Picture: "<img src='tmp-pic/picWIP.png'></img>"},
+            { id: 06, Species: 'Serpent(WIP)',     Health: 160, MagicPoints: 90,  AttackMin: 2, AttackMax: 3,  CritChance: 50, DodgeRate: 5,  Element: '', Affinity: '', Picture: "<img src='tmp-pic/picWIP.png'></img>"},
+            { id: 07, Species: 'Horse(WIP)',     Health: 100, MagicPoints: 100, AttackMin: 8, AttackMax: 10, CritChance: 5,  DodgeRate: 10, Element: '', Affinity: '', Picture: "<img src='tmp-pic/picWIP.png'></img>"},
+            { id: 08, Species: 'Meercat(WIP)',    Health: 130, MagicPoints: 50,  AttackMin: 4, AttackMax: 6,  CritChance: 60, DodgeRate: 15, Element: '', Affinity: '', Picture: "<img src='tmp-pic/picWIP.png'></img>"},
+            { id: 09, Species: 'Bird(WIP)',      Health: 140, MagicPoints: 40,  AttackMin: 1, AttackMax: 10, CritChance: 20, DodgeRate: 0,  Element: '', Affinity: '', Picture: "<img src='tmp-pic/picWIP.png'></img>"},
 
         ];
 
         console.table(Monster);
 
-        // ---- Other ----------------------------------------------------
+        // ---- Other ---------------------------------------------------- 
 
         let isReady = "no";
         let HasSelected = "no";
@@ -105,28 +104,34 @@
         let disButtonMagicAttk= "";
 
         let disButtonPC = "";
-        
-
-        
 
 
+        // ###############################################################
+        // ##                       Controller                          ##
+        // ###############################################################
+</script>
+        <script src="CharacterChoise.js"></script>
+        <script src="BattleCalc.js"></script>
 
 
 
 
+<script>
+        // ###############################################################
+        // ##                          View                             ##
+        // ###############################################################
 
-        //View
         updateView();
         function updateView() {
             if (isReady=="no") {
             document.getElementById("app").innerHTML = `
-            
+
             <div id="SelectionField" class="WhiteBox"></div>
 
             <div class="WhiteBox">
                 <button id="Choose0" class="pickme" onclick='Choose(0)'>Calumon</button>
                 <button id="Choose1" class="pickme" onclick='Choose(1)'>DemiMeramon</button>
-                <button id="Choose2" class="pickme" onclick='Choose(2)'>DemiVeemon</button>
+                <button id="Choose2" class="pickme" onclick='Choose(2)'>Purryl</button>
 
                 <button id="Choose3" class="pickme" onclick='Choose(3)'>Nyaromon</button>
                 <button id="Choose4" class="pickme" onclick='Choose(4)'>Poromon</button>
@@ -145,17 +150,17 @@
                 
                 <div id="BattleField">
                     <div id="PlayerBattlePic" class="fieldPic">${NoChoose}</div>
-    
+
                     <div class="VSbox">
-    
+
                         <div class="VSmark" >VS</div>
-    
+
                     </div>
-            
+
                     <div id="NPCBattlePic" class="fieldPic">${NPCharacterPic}</div>
                 </div>
-    
-    
+
+
                 <div class="BattleInfoWrap">
                     <div id="PlayerStats" class="">
                         
@@ -167,9 +172,9 @@
                     </div>
 
                     <div class="spacer"></div>
-    
+
                     <div id="NPCStats" class="">
-                        
+
                         <div class="StatSheetSmall">
                             <div class="Chosen">Enemy ${NPCChoise}</div>
                             HP: ${NPCHealth}/${NPCMaxHealth}
@@ -177,26 +182,26 @@
                         </div>
                     </div>
                 </div>
-    
-    
+
+
                 <div id="BattleButton" class="BattleSelection">
                     <button ${disButtonAttk} id="playAttack" class="pickme" onclick='InitiateAttack("basic")'>Basic Attack</button>
                     <button ${disButtonMagicAttk} disabled id="playMagicAttack" class="pickme" onclick='InitiateAttack("magic")'>Magic Attack</button>
-    
+
                 </div>
-    
+
             </div>
 
         `
         } else {
             document.getElementById("app").innerHTML = `
             <div class=PlayerFrame><div id="PCpic">${NoChoose}</div></div>
-            
 
 
 
 
-            
+
+
 
             <div class="result">
                 <div class="isWinner"> ${thisIsTheWinner} </div>
@@ -208,11 +213,9 @@
 
         `
         }
-    
+
     };
 
-        //Controller
-        
 
 
     </script>

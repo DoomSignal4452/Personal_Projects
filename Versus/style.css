@@ -114,7 +114,7 @@ button[disabled] {
 .CharPicture {
     height: 300px;
     width: 300px;
-    background-color: #666;
+    background-color: rgb(235, 235, 235);
     margin: 5px;
 }
 
